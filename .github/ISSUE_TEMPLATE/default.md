@@ -1,6 +1,6 @@
 ---
 name: Default Issue
-description: 標準のissueテンプレートです。
+about: 標準のissueテンプレートです。
 assignees:
   - mnt3710
 ---
