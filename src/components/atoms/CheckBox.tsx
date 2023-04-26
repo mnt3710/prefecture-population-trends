@@ -1,8 +1,14 @@
-export default function CheckBox({pref,id}) {
+interface PropsType {
+  pref: string;
+}
+
+const CheckBox = ({pref}: PropsType) => {
   return (
     <>
-      <input type="checkbox" onChange={()=>console.log("change")} />
+      <input type="checkbox" onChange={()=>console.log("click")} />
       <label>{pref}</label>
     </>
   )
 }
+
+export default CheckBox
