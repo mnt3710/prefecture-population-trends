@@ -1,14 +1,16 @@
 import CheckBox from '../atoms/CheckBox.tsx'
+import styles from '@/styles/CheckBoxes.module.css'
 
 const CheckBoxes = ({ region, pref }) => {
   return (
-    <>
-      <p className="region-toggle">{region}</p>
+    <div className={styles.root}>
+      <p className={styles.region}>{region}</p>
       {pref.map((value) => (
-        <CheckBox pref={value} />
+        <CheckBox className={styles.checkBox} pref={value} />
       ))}
-    </>
+    </div>
   )
 }
 
 export default CheckBoxes
+

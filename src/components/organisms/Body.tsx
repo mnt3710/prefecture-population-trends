@@ -1,4 +1,5 @@
 import CheckBoxes from '../molecules/CheckBoxes.tsx'
+import styles from '@/styles/Body.module.css'
 
 const prefList = [
   {
@@ -50,9 +51,11 @@ const prefList = [
 const Body = () => {
   return (
     <>
-      {prefList.map((obj) => (
-        <CheckBoxes region={obj.region} pref={obj.pref} />
-      ))}
+      <div className={styles.boxes}>
+        {prefList.map((obj) => (
+          <CheckBoxes region={obj.region} pref={obj.pref} />
+        ))}
+      </div>
     </>
   )
 }
