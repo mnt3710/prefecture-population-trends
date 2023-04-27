@@ -1,0 +1,7 @@
+.boxes {
+  border: solid;
+  border-radius: 8px;
+  padding: 16px 32px;
+  margin: 16px 32px;
+  width: full;
+}

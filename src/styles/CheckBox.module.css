@@ -1,0 +1,11 @@
+.pref {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.root {
+  display: flex;
+  flex-direction: row;
+  margin: 8px;
+}
