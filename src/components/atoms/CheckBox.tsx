@@ -1,11 +1,11 @@
 interface PropsType {
-  pref: string;
+  pref: string
 }
 
-const CheckBox = ({pref}: PropsType) => {
+const CheckBox = ({ pref }: PropsType) => {
   return (
     <>
-      <input type="checkbox" onChange={()=>console.log("click")} />
+      <input type='checkbox' onChange={() => console.log('click')} />
       <label>{pref}</label>
     </>
   )
