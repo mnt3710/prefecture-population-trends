@@ -4,9 +4,8 @@ import Body from '../components/organisms/Body.tsx'
 import Header from '../components/organisms/Header.tsx'
 
 const fetchPrefList = async () => {
-  const apiKey = ''
   const response = await fetch('https://opendata.resas-portal.go.jp/api/v1/prefectures', {
-    headers: { 'x-api-key': apiKey },
+    headers: { 'x-api-key': process.env.API_KEY },
   })
   const res = await response.json()
   return res
