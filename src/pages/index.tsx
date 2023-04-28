@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import { useState } from 'react'
 import Body from '../components/organisms/Body.tsx'
 import Header from '../components/organisms/Header.tsx'
 
