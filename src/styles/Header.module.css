@@ -1,0 +1,13 @@
+.root {
+  background-color: #4A5DA5;
+  color: white;
+  height: 60px;
+  margin: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  font-weight: bold;
+}
