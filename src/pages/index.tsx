@@ -12,7 +12,6 @@ const fetchPrefList = async () => {
 }
 
 export default function Home({ prefList }) {
-
   const regionList = [
     { region: '北海道・東北', prefs: [] },
     { region: '関東', prefs: [] },
@@ -22,20 +21,16 @@ export default function Home({ prefList }) {
     { region: '九州', prefs: [] },
   ]
 
-  prefList.forEach(pref => {
-    if(pref.prefCode <= 7){
+  prefList.forEach((pref) => {
+    if (pref.prefCode <= 7) {
       regionList[0].prefs.push(pref)
-    }
-    else if(pref.prefCode <= 14) {
+    } else if (pref.prefCode <= 14) {
       regionList[1].prefs.push(pref)
-    }
-    else if(pref.prefCode <= 23) {
+    } else if (pref.prefCode <= 23) {
       regionList[2].prefs.push(pref)
-    }
-    else if(pref.prefCode <= 30) {
+    } else if (pref.prefCode <= 30) {
       regionList[3].prefs.push(pref)
-    }
-    else if(pref.prefCode <= 39) {
+    } else if (pref.prefCode <= 39) {
       regionList[4].prefs.push(pref)
     } else {
       regionList[5].prefs.push(pref)
@@ -49,7 +44,7 @@ export default function Home({ prefList }) {
       </Head>
       <main>
         <Header />
-        <Body region={regionList}/>
+        <Body region={regionList} />
       </main>
     </>
   )

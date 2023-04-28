@@ -1,7 +1,7 @@
 import CheckBoxes from '../molecules/CheckBoxes.tsx'
 import styles from '@/styles/Body.module.css'
 
-const Body = ({region}) => {
+const Body = ({ region }) => {
   return (
     <>
       <div className={styles.boxes}>
