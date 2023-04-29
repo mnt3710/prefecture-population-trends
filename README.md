@@ -14,6 +14,8 @@ git clone リポジトリURL
 npm run dev
 ```
 
+※rootディレクトリに.envファイルを作成し、RESAS　APIのAPI KEYを設定する
+
 ## デザインルール
 padding, marginは基本的に4px単位で管理する
 
