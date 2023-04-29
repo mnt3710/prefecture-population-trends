@@ -1,10 +1,10 @@
 import styles from '@/styles/CheckBox.module.css'
 
-interface PropsType {
+type Props = {
   pref: string
 }
 
-const CheckBox = ({ pref }: PropsType) => {
+const CheckBox = ({ pref }: Props) => {
   return (
     <div className={styles.root}>
       <input type='checkbox' onChange={() => console.log('click')} />
