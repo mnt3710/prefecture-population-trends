@@ -1,5 +1,6 @@
 import CheckBoxes from '../molecules/CheckBoxes.tsx'
 import styles from '@/styles/Body.module.css'
+import Graph from '../molecules/Graph.tsx'
 
 type PrefType = {
   prefCode: number
@@ -22,6 +23,9 @@ const Body: React.FC = ({ regionList }: Props) => {
         {regionList.map((regionObj: RegionType) => (
           <CheckBoxes region={regionObj.region} prefs={regionObj.prefs} />
         ))}
+      </div>
+      <div className={styles.graph}>
+        <Graph />
       </div>
     </>
   )
