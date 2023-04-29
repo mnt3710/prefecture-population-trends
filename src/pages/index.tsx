@@ -43,7 +43,7 @@ export default function Home({ prefList }) {
       </Head>
       <main>
         <Header />
-        <Body region={regionList} />
+        <Body regionList={regionList} />
       </main>
     </>
   )
