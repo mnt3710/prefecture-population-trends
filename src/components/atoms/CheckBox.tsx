@@ -1,7 +1,7 @@
 import styles from '@/styles/CheckBox.module.css'
 
-type Props =  {
-  pref: string;
+type Props = {
+  pref: string
 }
 
 const CheckBox = ({ pref }: Props) => {

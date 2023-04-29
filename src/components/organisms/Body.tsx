@@ -2,12 +2,12 @@ import CheckBoxes from '../molecules/CheckBoxes.tsx'
 import styles from '@/styles/Body.module.css'
 
 type PrefType = {
-  prefCode: number;
-  prefName: string;
+  prefCode: number
+  prefName: string
 }
 
 type RegionType = {
-  region: string;
+  region: string
   prefs: prefType[]
 }
 
