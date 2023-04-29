@@ -11,6 +11,7 @@
 ## 環境構築
 ```
 git clone リポジトリURL
+npm install highcharts highcharts-react-official
 npm run dev
 ```
 
