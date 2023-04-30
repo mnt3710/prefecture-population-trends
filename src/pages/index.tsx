@@ -3,6 +3,15 @@ import Body from '../components/organisms/Body.tsx'
 import Header from '../components/organisms/Header.tsx'
 import { useState } from 'react'
 
+type PrefType = {
+  prefCode: number
+  prefName: string
+}
+
+type Props = {
+  prefList: PrefType[]
+}
+
 const fetchPrefList = async () => {
   const response = await fetch('https://opendata.resas-portal.go.jp/api/v1/prefectures', {
     headers: { 'x-api-key': process.env.API_KEY },
@@ -32,7 +41,7 @@ const Home = ({ prefList, population }) => {
     { region: '九州', prefs: [] },
   ]
 
-  prefList.forEach((pref) => {
+  prefList.forEach((pref: PrefType) => {
     if (pref.prefCode <= 7) {
       regionList[0].prefs.push(pref)
     } else if (pref.prefCode <= 14) {
