@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Body from '../components/organisms/Body.tsx'
 import Header from '../components/organisms/Header.tsx'
+import { useState } from 'react'
 
 type PrefType = {
   prefCode: number
@@ -19,7 +20,18 @@ const fetchPrefList = async () => {
   return res
 }
 
-export default function Home({ prefList }: Props) {
+const fetchPopulation = async () => {
+  const response = await fetch(
+    'https://opendata.resas-portal.go.jp/api/v1/population/composition/perYear?prefCode=11',
+    {
+      headers: { 'x-api-key': process.env.API_KEY },
+    },
+  )
+  const res = await response.json()
+  return res
+}
+
+const Home = ({ prefList, population }) => {
   const regionList = [
     { region: '北海道・東北', prefs: [] },
     { region: '関東', prefs: [] },
@@ -45,6 +57,14 @@ export default function Home({ prefList }: Props) {
     }
   })
 
+  let populationArray = []
+  let yearArray = []
+
+  population.forEach((x) => {
+    populationArray.push(x.value)
+    yearArray.push(x.year)
+  })
+
   return (
     <>
       <Head>
@@ -52,17 +72,21 @@ export default function Home({ prefList }: Props) {
       </Head>
       <main>
         <Header />
-        <Body regionList={regionList} />
+        <Body regionList={regionList} population={populationArray} year={yearArray} />
       </main>
     </>
   )
 }
 
+export default Home
+
 export const getServerSideProps = async (context) => {
-  const res = await fetchPrefList()
+  const prefRes = await fetchPrefList()
+  const populationRes = await fetchPopulation()
   return {
     props: {
-      prefList: res.result,
+      prefList: prefRes.result,
+      population: populationRes.result.data[0].data
     },
   }
 }
