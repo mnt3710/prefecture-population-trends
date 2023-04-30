@@ -16,7 +16,7 @@ type Props = {
   regionList: RegionType[]
 }
 
-const Body: React.FC = ({ regionList }: Props) => {
+const Body: React.FC = ({ regionList, population, year }: Props) => {
   return (
     <>
       <div className={styles.boxes}>
@@ -25,7 +25,7 @@ const Body: React.FC = ({ regionList }: Props) => {
         ))}
       </div>
       <div className={styles.graph}>
-        <Graph />
+        <Graph population={population} year={year}/>
       </div>
     </>
   )
