@@ -1,29 +1,24 @@
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 
-const Graph = ({population, year}) => {
+const Graph = ({ population, year }) => {
   const options = {
-  title: {
-    text: '総人口推移グラフ',
-  },
-  xAxis: {
     title: {
-      text: "年度"
+      text: '総人口推移グラフ',
     },
-    categories: year
-  },
-  yAxis: {
-    title: {
-      text: "人口数"
+    xAxis: {
+      title: {
+        text: '年度',
+      },
+      categories: year,
     },
-  },
-  series: [
-    {
-      name: '北海道',
-      data: population,
-    }
-  ],
-}
+    yAxis: {
+      title: {
+        text: '人口数',
+      },
+    },
+    series: population,
+  }
 
   return (
     <>
