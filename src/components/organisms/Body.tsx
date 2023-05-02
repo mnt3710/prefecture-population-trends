@@ -16,16 +16,27 @@ type Props = {
   regionList: RegionType[]
 }
 
-const Body: React.FC = ({ regionList, population, year, fetchPopulation }: Props) => {
+const Body: React.FC = ({
+  regionList,
+  population,
+  year,
+  fetchPopulation,
+  deletePopulation,
+}: Props) => {
   return (
     <>
       <div className={styles.boxes}>
         {regionList.map((regionObj: RegionType) => (
-          <CheckBoxes region={regionObj.region} prefs={regionObj.prefs} fetchPopulation={fetchPopulation}/>
+          <CheckBoxes
+            region={regionObj.region}
+            prefs={regionObj.prefs}
+            fetchPopulation={fetchPopulation}
+            deletePopulation={deletePopulation}
+          />
         ))}
       </div>
       <div className={styles.graph}>
-        <Graph population={population} year={year}/>
+        <Graph population={population} year={year} />
       </div>
     </>
   )
