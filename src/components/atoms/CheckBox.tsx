@@ -22,7 +22,6 @@ const CheckBox = ({ pref, prefCode, fetchPopulation, deletePopulation }: Props) 
     <div className={styles.root}>
       <input type='checkbox' value={checked} onChange={() => clickCheckBox()} />
       <label className={styles.pref}>{pref}</label>
-      {checked.toString()}
     </div>
   )
 }

@@ -50,7 +50,7 @@ const Home = ({ prefList }) => {
   }
 
   const deletePopulation = (pref) => {
-    setPopulation(population.filter(x => x.name != pref))
+    setPopulation(population.filter((x) => x.name != pref))
   }
 
   const regionList = [
@@ -92,8 +92,6 @@ const Home = ({ prefList }) => {
           fetchPopulation={clickBtn}
           deletePopulation={deletePopulation}
         />
-        <button onClick={() => deletePopulation("福島県")}>delete</button>
-        {JSON.stringify(population)}
       </main>
     </>
   )
