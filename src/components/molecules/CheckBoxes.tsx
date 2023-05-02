@@ -11,12 +11,12 @@ type Props = {
   prefs: PrefType[]
 }
 
-const CheckBoxes = ({ region, prefs }: Props) => {
+const CheckBoxes = ({ region, prefs, fetchPopulation }: Props) => {
   return (
     <div className={styles.root}>
       <p className={styles.region}>{region}</p>
       {prefs.map((pref: PrefType) => (
-        <CheckBox className={styles.checkBox} pref={pref.prefName} />
+        <CheckBox className={styles.checkBox} pref={pref.prefName} prefCode={pref.prefCode} fetchPopulation={fetchPopulation}/>
       ))}
     </div>
   )

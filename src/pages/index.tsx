@@ -44,10 +44,18 @@ const Home = ({ prefList }) => {
 
   const [population, setPopulation] = useState([])
 
-  const clickBtn = async () => {
-    const response = await fetchPopulation(2)
+  const clickBtn = async (prefCode) => {
+    const response = await fetchPopulation(prefCode)
     setPopulation(response.result.data[0].data)
   }
+
+  let populationArray = []
+  let yearArray = []
+
+  population.forEach((x) => {
+    populationArray.push(x.value)
+    yearArray.push(x.year)
+  })
 
   const regionList = [
     { region: '北海道・東北', prefs: [] },
@@ -74,15 +82,6 @@ const Home = ({ prefList }) => {
     }
   })
 
-  let populationArray = []
-  let yearArray = []
-
-  population.forEach((x) => {
-    populationArray.push(x.value)
-    yearArray.push(x.year)
-  })
-
-
   return (
     <>
       <Head>
@@ -90,8 +89,8 @@ const Home = ({ prefList }) => {
       </Head>
       <main>
         <Header />
-        <Body regionList={regionList} population={populationArray} year={yearArray} />
-        <button onClick={() => clickBtn()}>push</button>
+        <Body regionList={regionList} population={populationArray} year={yearArray} fetchPopulation={clickBtn}/>
+        {/* <button onClick={() => clickBtn()}>push</button> */}
       </main>
     </>
   )

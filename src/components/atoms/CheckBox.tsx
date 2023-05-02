@@ -4,10 +4,10 @@ type Props = {
   pref: string
 }
 
-const CheckBox = ({ pref }: Props) => {
+const CheckBox = ({ pref, prefCode, fetchPopulation }: Props) => {
   return (
     <div className={styles.root}>
-      <input type='checkbox' onChange={() => console.log('click')} />
+      <input type='checkbox' onChange={() => fetchPopulation(prefCode)} />
       <label className={styles.pref}>{pref}</label>
     </div>
   )
