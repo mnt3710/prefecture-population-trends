@@ -41,21 +41,28 @@ const fetchPopulation = async (prefCode) => {
 }
 
 const Home = ({ prefList }) => {
-
   const [population, setPopulation] = useState([])
-
-  const clickBtn = async (prefCode) => {
-    const response = await fetchPopulation(prefCode)
-    setPopulation(response.result.data[0].data)
-  }
+  const [year, setYear] = useState([])
 
   let populationArray = []
   let yearArray = []
 
-  population.forEach((x) => {
-    populationArray.push(x.value)
-    yearArray.push(x.year)
-  })
+  const clickBtn = async (prefCode, pref) => {
+    const response = await fetchPopulation(prefCode)
+    const responseArray = response.result.data[0].data
+
+    populationArray.push(...population ,{name: pref, data:[]})
+    yearArray = []
+
+    responseArray.forEach((x) => {
+      populationArray[population.length].data.push(x.value)
+      yearArray.push(x.year)
+    })
+
+
+    setPopulation(populationArray)
+    setYear(yearArray)
+  }
 
   const regionList = [
     { region: '北海道・東北', prefs: [] },
@@ -89,8 +96,15 @@ const Home = ({ prefList }) => {
       </Head>
       <main>
         <Header />
-        <Body regionList={regionList} population={populationArray} year={yearArray} fetchPopulation={clickBtn}/>
-        {/* <button onClick={() => clickBtn()}>push</button> */}
+        <Body
+          regionList={regionList}
+          population={population}
+          year={year}
+          fetchPopulation={clickBtn}
+        />
+{/*         <button onClick={() => clickBtn(2, '北海道')}>push</button>
+        <button onClick={() => clickBtn(1, '山形')}>push</button>
+        <button onClick={() => console.log(population)}>disp</button> */}
       </main>
     </>
   )

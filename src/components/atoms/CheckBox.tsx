@@ -7,7 +7,7 @@ type Props = {
 const CheckBox = ({ pref, prefCode, fetchPopulation }: Props) => {
   return (
     <div className={styles.root}>
-      <input type='checkbox' onChange={() => fetchPopulation(prefCode)} />
+      <input type='checkbox' onChange={() => fetchPopulation(prefCode, pref)} />
       <label className={styles.pref}>{pref}</label>
     </div>
   )

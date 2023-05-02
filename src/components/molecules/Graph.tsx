@@ -17,12 +17,7 @@ const Graph = ({population, year}) => {
       text: "人口数"
     },
   },
-  series: [
-    {
-      name: '北海道',
-      data: population,
-    }
-  ],
+  series: population
 }
 
   return (
