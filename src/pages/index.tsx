@@ -2,6 +2,8 @@ import Head from 'next/head'
 import Body from '../components/organisms/Body.tsx'
 import Header from '../components/organisms/Header.tsx'
 import { useState } from 'react'
+import useSWR from 'swr'
+import axios from 'axios'
 
 type PrefType = {
   prefCode: number
@@ -13,25 +15,40 @@ type Props = {
 }
 
 const fetchPrefList = async () => {
-  const response = await fetch('https://opendata.resas-portal.go.jp/api/v1/prefectures', {
-    headers: { 'x-api-key': process.env.API_KEY },
-  })
-  const res = await response.json()
-  return res
+  const url = 'https://opendata.resas-portal.go.jp/api/v1/prefectures'
+  const header = {
+    headers: { 'X-API-KEY': process.env.API_KEY },
+  }
+  const response = await axios.get(url, header)
+  return response.data
 }
 
-const fetchPopulation = async () => {
-  const response = await fetch(
-    'https://opendata.resas-portal.go.jp/api/v1/population/composition/perYear?prefCode=11',
-    {
-      headers: { 'x-api-key': process.env.API_KEY },
-    },
-  )
-  const res = await response.json()
-  return res
+/* const fetchPopulation = async () => {
+  const url =
+    'https://opendata.resas-portal.go.jp/api/v1/population/composition/perYear?prefCode=11'
+  const header = {
+    headers: { 'X-API-KEY': process.env.API_KEY },
+  }
+  const response = await axios.get(url, header)
+  console.log(response.data)
+  return response.data
+} */
+
+const fetchPopulation = async (prefCode) => {
+  const url = 'http://localhost:3000/api/population?prefCode=' + prefCode
+  const response = await axios.get(url)
+  return response.data
 }
 
-const Home = ({ prefList, population }) => {
+const Home = ({ prefList }) => {
+
+  const [population, setPopulation] = useState([])
+
+  const clickBtn = async () => {
+    const response = await fetchPopulation(2)
+    setPopulation(response.result.data[0].data)
+  }
+
   const regionList = [
     { region: '北海道・東北', prefs: [] },
     { region: '関東', prefs: [] },
@@ -65,6 +82,7 @@ const Home = ({ prefList, population }) => {
     yearArray.push(x.year)
   })
 
+
   return (
     <>
       <Head>
@@ -73,6 +91,7 @@ const Home = ({ prefList, population }) => {
       <main>
         <Header />
         <Body regionList={regionList} population={populationArray} year={yearArray} />
+        <button onClick={() => clickBtn()}>push</button>
       </main>
     </>
   )
@@ -82,11 +101,10 @@ export default Home
 
 export const getServerSideProps = async (context) => {
   const prefRes = await fetchPrefList()
-  const populationRes = await fetchPopulation()
+
   return {
     props: {
       prefList: prefRes.result,
-      population: populationRes.result.data[0].data
     },
   }
 }
