@@ -9,12 +9,12 @@ type PrefType = {
 
 type RegionType = {
   region: string
-  prefs: prefType[]
+  prefs: PrefType[]
 }
 
 type PopulationType = {
   name: string
-  data: PrefType[]
+  data: number[]
 }
 
 type Props = {
@@ -25,7 +25,7 @@ type Props = {
   deletePopulation: Function
 }
 
-const Body: React.FC = ({
+const Body = ({
   regionList,
   population,
   year,
@@ -44,6 +44,7 @@ const Body: React.FC = ({
           />
         ))}
       </div>
+      {JSON.stringify(population)}
       <div className={styles.graph}>
         <Graph population={population} year={year} />
       </div>

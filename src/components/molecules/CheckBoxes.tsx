@@ -19,7 +19,6 @@ const CheckBoxes = ({ region, prefs, fetchPopulation, deletePopulation }: Props)
       <p className={styles.region}>{region}</p>
       {prefs.map((pref: PrefType) => (
         <CheckBox
-          className={styles.checkBox}
           pref={pref.prefName}
           prefCode={pref.prefCode}
           fetchPopulation={fetchPopulation}
