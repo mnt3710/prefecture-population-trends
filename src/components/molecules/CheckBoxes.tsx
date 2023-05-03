@@ -9,6 +9,8 @@ type PrefType = {
 type Props = {
   region: string
   prefs: PrefType[]
+  fetchPopulation: Function
+  deletePopulation: Function
 }
 
 const CheckBoxes = ({ region, prefs, fetchPopulation, deletePopulation }: Props) => {

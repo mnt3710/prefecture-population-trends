@@ -12,8 +12,17 @@ type RegionType = {
   prefs: prefType[]
 }
 
+type PopulationType = {
+  name: string,
+  data: PrefType[]
+}
+
 type Props = {
   regionList: RegionType[]
+  population: PopulationType[]
+  year: number[]
+  fetchPopulation: Function
+  deletePopulation: Function
 }
 
 const Body: React.FC = ({

@@ -1,6 +1,16 @@
 import Highcharts from 'highcharts'
 import HighchartsReact from 'highcharts-react-official'
 
+type PopulationType = {
+  name: string
+  data: number[]
+}
+
+type Props = {
+  population: PopulationType[]
+  year: number[]
+}
+
 const Graph = ({ population, year }) => {
   const options = {
     title: {

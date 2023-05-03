@@ -3,6 +3,9 @@ import { useState } from 'react'
 
 type Props = {
   pref: string
+  prefCode: number
+  fetchPopulation: Function
+  deletePopulation: Function
 }
 
 const CheckBox = ({ pref, prefCode, fetchPopulation, deletePopulation }: Props) => {
