@@ -13,7 +13,7 @@ type RegionType = {
 }
 
 type PopulationType = {
-  name: string,
+  name: string
   data: PrefType[]
 }
 
