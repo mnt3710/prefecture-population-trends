@@ -14,6 +14,21 @@ type Props = {
   prefList: PrefType[]
 }
 
+type ResponseType = {
+  year: number
+  value: number
+}
+
+type PopulationType = {
+  name: string
+  data: number[]
+}
+
+type RegionType = {
+  region: string
+  prefs: PrefType[]
+}
+
 const fetchPrefList = async () => {
   const url = 'https://opendata.resas-portal.go.jp/api/v1/prefectures'
   const header = {
@@ -23,24 +38,24 @@ const fetchPrefList = async () => {
   return response.data
 }
 
-const fetchPopulation = async (prefCode) => {
+const fetchPopulation = async (prefCode: number) => {
   const url = 'http://localhost:3000/api/population?prefCode=' + prefCode
   const response = await axios.get(url)
   return response.data
 }
 
-const Home = ({ prefList }) => {
-  const [population, setPopulation] = useState([])
-  const [year, setYear] = useState([])
+const Home = ({ prefList }: Props) => {
+  const [population, setPopulation] = useState<PopulationType[]>([])
+  const [year, setYear] = useState<number[]>([])
 
-  const clickBtn = async (prefCode, pref) => {
+  const clickBtn = async (prefCode: number, pref: string) => {
     const response = await fetchPopulation(prefCode)
     const responseArray = response.result.data[0].data
 
-    let populationArray = [...population, { name: pref, data: [] }]
-    let yearArray = []
+    let populationArray: PopulationType[] = [...population, { name: pref, data: [] }]
+    let yearArray: number[] = []
 
-    responseArray.forEach((x) => {
+    responseArray.forEach((x: ResponseType) => {
       populationArray[population.length].data.push(x.value)
       yearArray.push(x.year)
     })
@@ -49,11 +64,11 @@ const Home = ({ prefList }) => {
     setYear(yearArray)
   }
 
-  const deletePopulation = (pref) => {
-    setPopulation(population.filter((x) => x.name != pref))
+  const deletePopulation = (pref: string) => {
+    setPopulation(population.filter((x: PopulationType) => x.name != pref))
   }
 
-  const regionList = [
+  const regionList: RegionType[] = [
     { region: '北海道・東北', prefs: [] },
     { region: '関東', prefs: [] },
     { region: '中部', prefs: [] },
@@ -99,7 +114,8 @@ const Home = ({ prefList }) => {
 
 export default Home
 
-export const getServerSideProps = async (context) => {
+// TODO: contextの型つけ
+export const getServerSideProps = async (context: any) => {
   const prefRes = await fetchPrefList()
 
   return {
