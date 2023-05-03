@@ -9,21 +9,21 @@ type Props = {
 }
 
 const CheckBox = ({ pref, prefCode, fetchPopulation, deletePopulation }: Props) => {
-  const [checked, setChecked] = useState(false)
+  const [isChecked, setIsChecked] = useState(false)
 
-  const clickCheckBox = () => {
-    if (!checked) {
+  const clickCheckBox = (): void => {
+    if (!isChecked) {
       fetchPopulation(prefCode, pref)
-      setChecked(true)
+      setIsChecked(true)
     } else {
       deletePopulation(pref)
-      setChecked(false)
+      setIsChecked(false)
     }
   }
 
   return (
     <div className={styles.root}>
-      <input type='checkbox' value={checked} onChange={() => clickCheckBox()} />
+      <input type='checkbox' onChange={clickCheckBox} />
       <label className={styles.pref}>{pref}</label>
     </div>
   )
