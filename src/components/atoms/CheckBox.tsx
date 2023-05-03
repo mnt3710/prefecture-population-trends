@@ -9,7 +9,7 @@ type Props = {
 }
 
 const CheckBox = ({ pref, prefCode, fetchPopulation, deletePopulation }: Props) => {
-  const [checked, setChecked] = useState(false)
+  const [checked, setChecked] = useState<boolean>(false)
 
   const clickCheckBox = () => {
     if (!checked) {
