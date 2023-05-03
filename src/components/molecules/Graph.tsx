@@ -11,7 +11,7 @@ type Props = {
   year: number[]
 }
 
-const Graph = ({ population, year }) => {
+const Graph = ({ population, year }: Props) => {
   const options = {
     title: {
       text: '総人口推移グラフ',
