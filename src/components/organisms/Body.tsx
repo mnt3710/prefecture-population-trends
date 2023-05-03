@@ -1,6 +1,6 @@
 import CheckBoxes from '../molecules/CheckBoxes.tsx'
-import styles from '@/styles/Body.module.css'
 import Graph from '../molecules/Graph.tsx'
+import styles from '@/styles/Body.module.css'
 
 type PrefType = {
   prefCode: number
@@ -25,18 +25,14 @@ type Props = {
   deletePopulation: Function
 }
 
-const Body = ({
-  regionList,
-  population,
-  year,
-  fetchPopulation,
-  deletePopulation,
-}: Props) => {
+const Body = ({ regionList, population, year, fetchPopulation, deletePopulation }: Props) => {
   return (
     <>
       <div className={styles.boxes}>
-        {regionList.map((regionObj: RegionType) => (
+        {/* TODO: keyをindexではないものにする */}
+        {regionList.map((regionObj: RegionType, index: number) => (
           <CheckBoxes
+            key={index.toString()}
             region={regionObj.region}
             prefs={regionObj.prefs}
             fetchPopulation={fetchPopulation}
@@ -44,7 +40,6 @@ const Body = ({
           />
         ))}
       </div>
-      {JSON.stringify(population)}
       <div className={styles.graph}>
         <Graph population={population} year={year} />
       </div>

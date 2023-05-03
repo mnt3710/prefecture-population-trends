@@ -1,9 +1,9 @@
+import axios from 'axios'
 import Head from 'next/head'
-import Body from '../components/organisms/Body.tsx'
-import Header from '../components/organisms/Header.tsx'
 import { useState } from 'react'
 import useSWR from 'swr'
-import axios from 'axios'
+import Body from '../components/organisms/Body.tsx'
+import Header from '../components/organisms/Header.tsx'
 
 type PrefType = {
   prefCode: number

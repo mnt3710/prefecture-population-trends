@@ -17,8 +17,10 @@ const CheckBoxes = ({ region, prefs, fetchPopulation, deletePopulation }: Props)
   return (
     <div className={styles.root}>
       <p className={styles.region}>{region}</p>
-      {prefs.map((pref: PrefType) => (
+      {/* TODO: keyをindexではないものにする */}
+      {prefs.map((pref: PrefType, index: number) => (
         <CheckBox
+          key={index.toString()}
           pref={pref.prefName}
           prefCode={pref.prefCode}
           fetchPopulation={fetchPopulation}

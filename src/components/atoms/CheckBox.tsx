@@ -1,5 +1,5 @@
-import styles from '@/styles/CheckBox.module.css'
 import { useState } from 'react'
+import styles from '@/styles/CheckBox.module.css'
 
 type Props = {
   pref: string
