@@ -1,0 +1,11 @@
+.root {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.region {
+  font-weight: bold;
+  margin-right: 28px;
+  white-space: nowrap;
+}
