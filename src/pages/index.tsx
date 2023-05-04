@@ -39,7 +39,7 @@ const fetchPrefList = async () => {
 }
 
 const fetchPopulation = async (prefCode: number) => {
-  const url = 'http://localhost:3000/api/population?prefCode=' + prefCode
+  const url = '/api/population?prefCode=' + prefCode
   const response = await axios.get(url)
   return response.data
 }
